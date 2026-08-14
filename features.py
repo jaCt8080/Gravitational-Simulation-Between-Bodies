@@ -25,7 +25,7 @@ class Body:
     elif self.y_pos>HEIGHT-self.radius and self.y_vel>0:
       self.y_vel*=-1
 
-  def gravity(self,other,G=1): # value of G need to change accod to simulation 
+  def gravity(self,other,G=1,dt=1/90): 
     Dx= other.x_pos-self.x_pos
     Dy= other.y_pos-self.y_pos
     R = math.hypot(Dx,Dy)
@@ -33,13 +33,13 @@ class Body:
       nx=Dx/R
       ny=Dy/R
 
-      g_self = G*self.mass/(R**2)
-      g_other = G*other.mass/(R**2)
+      g_self = G*other.mass/(R**2)
+      g_other = G*self.mass/(R**2)
 
-      self.x_vel+=g_self*nx/200  # for now i am putting 200 division by try and error,need to be change
-      self.y_vel+=g_self*ny/200
-      other.x_vel-=g_other*nx/200
-      other.y_vel-=g_other*ny/200
+      self.x_vel+=g_self*nx*dt  
+      self.y_vel+=g_self*ny*dt
+      other.x_vel-=g_other*nx*dt
+      other.y_vel-=g_other*ny*dt
 
   def collision(self,other):
     Dx= other.x_pos-self.x_pos
