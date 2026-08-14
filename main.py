@@ -9,14 +9,14 @@ pygame.display.set_caption("Gravitational Simulation")
 clock=pygame.time.Clock()
 
 Bodies=[]
-for _ in range(2):
+for _ in range(20):
     Color=(random.randint(125,225),random.randint(125,225),random.randint(125,225))
     Radius=random.randint(20,35)
     Mass= Radius**3
     X_pos=random.randint(Radius,WIDTH-Radius)
     Y_pos=random.randint(Radius,HEIGHT-Radius)
-    X_vel=random.choice([-4,-3,-2,2,3,4])
-    Y_vel=random.choice([-4,-3,-2,2,3,4])
+    X_vel=random.choice([0])
+    Y_vel=random.choice([0])
     Bodies.append(Body(Color,Radius,X_pos,Y_pos,X_vel,Y_vel,Mass))
 
 running = True
